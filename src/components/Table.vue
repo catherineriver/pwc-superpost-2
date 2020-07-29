@@ -1,18 +1,18 @@
 <template>
     <div class="pwc-table">
-        <div class="pwc-table__container" @mouseover=onHover @mouseleave=onMouseleave ref="table">
+        <div class="pwc-table__container" @mouseover=onHover @mouseleave=onMouseleave>
             <div class="pwc-table__row pwc-table__row--header" ref="columnHeader">
                 <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X1</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X2</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X3</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X4</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X5</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X6</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X7</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X8</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X9</div>
-                <div class="pwc-table__cell pwc-table__cell--title" v-bind:class="{ active: isActive }">X10</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X1</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X2</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X3</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X4</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X5</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X6</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X7</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X8</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X9</div>
+                <div class="pwc-table__cell pwc-table__cell--title">X10</div>
             </div>
             <div class="pwc-table__row">
                 <div class="pwc-table__cell pwc-table__cell--title">X1</div>
@@ -150,9 +150,59 @@
     </div>
 </template>
 
+<script>
+
+export default {
+  name: 'Table',
+  components: {
+
+  },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  computed: {
+
+  },
+  methods: {
+    indexInParent(node) {
+      const children = node.parentNode.childNodes;
+      let num = 0;
+      for (let i = 0; i < children.length; i += 1) {
+        if (children[i] === node) return num;
+        if (children[i].nodeType === 1) num += 1;
+      }
+      return -1;
+    },
+    onHover(event) {
+      const header = this.$refs.columnHeader;
+      const elem = header.querySelector('.active');
+      const index = this.indexInParent(event.target);
+
+      console.log(header.childNodes[index]);
+
+      header.childNodes[index].classList.add('active');
+      elem.classList.remove('active');
+    },
+    onMouseleave() {
+      const header = this.$refs.columnHeader;
+      const elem = header.querySelector('.active');
+
+      if (!elem) {
+        return null;
+      }
+      return elem.classList.remove('active');
+    },
+  },
+
+};
+
+</script>
 
 <style lang="stylus">
   .pwc-table
+    padding: 40px 0;
     &__container
         display flex
         flex-direction column
@@ -214,53 +264,3 @@
 
 
 </style>
-
-<script>
-
-export default {
-  name: 'Table',
-  components: {
-
-  },
-  data() {
-    return {
-      isActive: false,
-    };
-  },
-  computed: {
-
-  },
-  methods: {
-    indexInParent(node) {
-      const children = node.parentNode.childNodes;
-      let num = 0;
-      for (let i = 0; i < children.length; i += 1) {
-        if (children[i] === node) return num;
-        if (children[i].nodeType === 1) num += 1;
-      }
-      return -1;
-    },
-    onHover(event) {
-      const header = this.$refs.columnHeader;
-      const elem = header.querySelector('.active');
-      const index = this.indexInParent(event.target);
-
-      console.log(header.childNodes[index]);
-
-      header.childNodes[index].classList.add('active');
-      elem.classList.remove('active');
-    },
-    onMouseleave() {
-      const header = this.$refs.columnHeader;
-      const elem = header.querySelector('.active');
-
-      if (!elem) {
-        return null;
-      }
-      return elem.classList.remove('active');
-    },
-  },
-
-};
-
-</script>
