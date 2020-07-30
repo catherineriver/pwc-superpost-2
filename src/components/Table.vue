@@ -295,7 +295,6 @@ export default {
         &:hover
             cursor pointer
             background: rgba(238, 27, 66, 0.2);
-            box-shadow: 0px 0px 0px 8px rgba(238, 27, 66, 0.2);
             z-index 10
         &:before
             content:'';

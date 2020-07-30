@@ -93,6 +93,9 @@ export default {
       border: 1px solid #775B13
       transform: translate3d(-50%, 0, 0)
 
+      background-image: linear-gradient(0deg,#ffb600 25%,#e5a400 0,#e5a400 50%,#ffb600 0,#ffb600 75%,#e5a400 0,#e5a400);
+      background-size: 4px 4px;
+
       @media (min-width: 568px)
         width: 375px
         padding: 18px 22px

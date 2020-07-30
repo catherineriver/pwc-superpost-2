@@ -24,11 +24,10 @@
         <div class="pwc-main__output">
           <Table />
         </div>
-        <!-- <div class="pwc-main__text" v-html="text[1]"></div> -->
         <div class="pwc-main__questions">
           <div class="pwc-main__question">
             <div class="pwc-question">
-              <div class="pwc-question__text">Введите последовательность вида X1-X2-X3-X4-X5</div>
+              <div class="pwc-question__text">Введите код</div>
               <div
                   :class="{
                   'pwc-question__field': true,
@@ -36,6 +35,18 @@
                   'pwc-question__field--textarea': true
                 }">
                 <textarea v-model="a1" placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="pwc-main__question">
+            <div class="pwc-question">
+              <div class="pwc-question__text">Введите последовательность вида X1-X2-X3-X4-X5</div>
+              <div
+                  :class="{
+                  'pwc-question__field': true,
+                  'pwc-question__field--disabled': isResolved
+                }">
+                <input v-model="a2" type="text" placeholder="Введите ответ" :disabled="isResolved">
               </div>
             </div>
           </div>
@@ -51,7 +62,6 @@
                 }">
                 <input v-model="a2" type="text" placeholder="Введите только число" :disabled="isResolved">
               </div>
-              <div class="pwc-question__notice">Округлите до сотых процента</div>
             </div>
           </div>
         </div>
@@ -356,6 +366,8 @@ export default {
 
         &::placeholder
           color: #C56676
+        &:focus::placeholder
+          color: transparent;
 
         &:disabled
           color: #818181
@@ -368,6 +380,7 @@ export default {
       & > textarea
         height: 160px
         padding: 15px
+        resize: none
   .pwc-main-popup
     position: fixed
     z-index: 10
