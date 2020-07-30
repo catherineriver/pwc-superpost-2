@@ -101,6 +101,10 @@ export default {
     &__tooltip-text
       line-height: 1.4em
 
+      & img
+        max-width 100%
+        display block
+
     &__tooltip-arrow
       position: absolute
       bottom: -11px

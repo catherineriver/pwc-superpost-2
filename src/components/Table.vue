@@ -1,148 +1,66 @@
 <template>
     <div class="pwc-table">
-        <div class="pwc-table__container" @mouseover=onHover @mouseleave=onMouseleave>
+        <div class="pwc-table__container">
             <div class="pwc-table__row pwc-table__row--header" ref="columnHeader">
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell pwc-table__cell--title">X1</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X2</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X3</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X4</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X5</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X6</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X7</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X8</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X9</div>
-                <div class="pwc-table__cell pwc-table__cell--title">X10</div>
+                <div class="pwc-table__cell"
+                    v-bind:class="(index == activeIndex) ? 'active' : false"
+                    v-for="(item, index) in rows.headers"
+                    v-bind:key="index"
+                    ref="items"
+                    @mouseover="indicate(index)"
+                >
+                    {{item.title}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X1</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">125</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">297</div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X2</div>
-                <div class="pwc-table__cell">125</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">151</div>
-                <div class="pwc-table__cell">377</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">134</div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row2" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X3</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">151</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">266</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row3" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X4</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">377</div>
-                <div class="pwc-table__cell">266</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">115</div>
-                <div class="pwc-table__cell">93</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row4" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X5</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">115</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">222</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row5" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X6</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">93</div>
-                <div class="pwc-table__cell">222</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">135</div>
-                <div class="pwc-table__cell">77</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
+               <div class="pwc-table__cell" v-for="(item, index) in rows.row6" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X7</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">135</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">145</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
+               <div class="pwc-table__cell" v-for="(item, index) in rows.row7" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X8</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">77</div>
-                <div class="pwc-table__cell">145</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">65</div>
-                <div class="pwc-table__cell">72</div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row8" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X9</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">65</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">1</div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row9" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
             <div class="pwc-table__row">
-                <div class="pwc-table__cell pwc-table__cell--title">X10</div>
-                <div class="pwc-table__cell">297</div>
-                <div class="pwc-table__cell">134</div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell"></div>
-                <div class="pwc-table__cell">72</div>
-                <div class="pwc-table__cell">1</div>
-                <div class="pwc-table__cell"></div>
+                <div class="pwc-table__cell" v-for="(item, index) in rows.row10" :key="index" @mouseover="indicate(index)">
+                    {{item.index}}
+                </div>
             </div>
 
         </div>
@@ -154,45 +72,166 @@
 
 export default {
   name: 'Table',
-  components: {
-
-  },
   data() {
     return {
-      isActive: false,
+      activeIndex: null,
+      rows: {
+        headers: [
+          {
+            key: 1,
+            title: '',
+          },
+          {
+            key: 2,
+            title: 'X1',
+
+          },
+          { key: 3, title: 'X2' },
+          { key: 4, title: 'X3' },
+          { key: 5, title: 'X4' },
+          { key: 6, title: 'X5' },
+          { title: 'X6' },
+          { title: 'X7' },
+          { title: 'X8' },
+          { title: 'X9' },
+          { title: 'X10' },
+        ],
+        row: [
+          { index: 'X1' },
+          { index: '' },
+          { index: '125' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '297' },
+        ],
+        row2: [
+          { index: 'X2' },
+          { index: '125' },
+          { index: '' },
+          { index: '151' },
+          { index: '377' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '134' },
+        ],
+        row3: [
+          { index: 'X3' },
+          { index: '' },
+          { index: '151' },
+          { index: '' },
+          { index: '266' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+        ],
+        row4: [
+          { index: 'X4' },
+          { index: '' },
+          { index: '377' },
+          { index: '266' },
+          { index: '' },
+          { index: '115' },
+          { index: '93' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+        ],
+        row5: [
+          { index: 'X5' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '115' },
+          { index: '' },
+          { index: '222' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+        ],
+        row6: [
+          { index: 'X6' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '93' },
+          { index: '222' },
+          { index: '' },
+          { index: '135' },
+          { index: '77' },
+          { index: '' },
+          { index: '' },
+        ],
+        row7: [
+          { index: 'X7' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '135' },
+          { index: '' },
+          { index: '145' },
+          { index: '' },
+          { index: '' },
+        ],
+        row8: [
+          { index: 'X8' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '77' },
+          { index: '145' },
+          { index: '' },
+          { index: '65' },
+          { index: '72' },
+        ],
+        row9: [
+          { index: 'X9' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '65' },
+          { index: '' },
+          { index: '1' },
+        ],
+        row10: [
+          { index: 'X10' },
+          { index: '297' },
+          { index: '134' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '' },
+          { index: '72' },
+          { index: '1' },
+          { index: '' },
+        ],
+      },
     };
   },
-  computed: {
-
-  },
   methods: {
-    indexInParent(node) {
-      const children = node.parentNode.childNodes;
-      let num = 0;
-      for (let i = 0; i < children.length; i += 1) {
-        if (children[i] === node) return num;
-        if (children[i].nodeType === 1) num += 1;
-      }
-      return -1;
-    },
-    onHover(event) {
-      const header = this.$refs.columnHeader;
-      const elem = header.querySelector('.active');
-      const index = this.indexInParent(event.target);
-
-      console.log(header.childNodes[index]);
-
-      header.childNodes[index].classList.add('active');
-      elem.classList.remove('active');
-    },
-    onMouseleave() {
-      const header = this.$refs.columnHeader;
-      const elem = header.querySelector('.active');
-
-      if (!elem) {
-        return null;
-      }
-      return elem.classList.remove('active');
+    indicate(index) {
+      this.activeIndex = index;
     },
   },
 
@@ -202,22 +241,33 @@ export default {
 
 <style lang="stylus">
   .pwc-table
-    padding: 40px 0;
     &__container
         display flex
         flex-direction column
-        width 432px
+        width 300px
+        max-width: 100%;
         border: 3px solid #64112F;
+
+        @media (min-width: 425px)
+            width 400px
+        @media (min-width: 680px)
+            width 444px
     &__row
         display flex
         flex-direction row
         &--header
+            & .pwc-table__cell
+                text-shadow: -1px 0 0 #0075ff;
+                color: #e0301e;
+            &  .pwc-table__cell.active
+                background-color rgba(0, 56, 255, 0.22)
             & .pwc-table__cell:first-child:hover
                 background-color transparent
                 cursor default
             & .pwc-table__cell:hover
                 background-color rgba(0, 56, 255, 0.22)
                 box-shadow none
+
         &:not(:first-child):hover .pwc-table__cell:first-child
             background-color rgba(0, 56, 255, 0.22)
             z-index 10
@@ -228,27 +278,30 @@ export default {
         display flex
         align-items center
         justify-content center
-        width 40px
-        height 40px
-        flex-grow 1
-        border: 1px solid #3E3E3E;
+        width 25px
+        font-size 9px
+        box-shadow: inset 0px 0px 0px 0.69314px rgba(62,62,62,1);
         box-sizing: border-box;
         position relative
         color #ECECEC
+
+        flex: 1 0 auto;
+        height:auto;
+
+        &:first-child
+            text-shadow: -1px 0 0 #0075ff;
+            color: #e0301e;
 
         &:hover
             cursor pointer
             background: rgba(238, 27, 66, 0.2);
             box-shadow: 0px 0px 0px 8px rgba(238, 27, 66, 0.2);
             z-index 10
-
-        &--title
-            text-shadow: -1px 0 0 #0075ff;
-            color: #e0301e;
-
-            &.active
-                background-color rgba(0, 56, 255, 0.22)
-
+        &:before
+            content:'';
+            float:left;
+            padding-top:100%;
+            display table
         &::after
             content: ''
             position absolute
@@ -261,6 +314,12 @@ export default {
             background-color transparent
             background-image: linear-gradient(0deg, transparent 25%, rgba(0,0,0,0.25) 25%, rgba(0,0,0,0.25) 50%, transparent 50%, transparent 75%, rgba(0,0,0,0.25) 75%, rgba(0,0,0,0.25) 100%)
             background-size: 4px 4px
+
+        @media (min-width: 425px)
+            width 30px
+            font-size 14px
+        @media (min-width: 680px)
+            width 40px
 
 
 </style>

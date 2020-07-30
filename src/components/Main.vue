@@ -20,26 +20,21 @@
     </div>
     <div class="l-island-a">
       <div class="pwc-main__container">
-        <!-- <div class="pwc-main__text" v-html="text[0]"></div> -->
-        <!-- <div class="pwc-main__output pwc-terminal">
-          2045-06-30 22:45:10 &lt;private&gt;:<br>
-          Инициализирован запуск симуляции<br>
-          для пользователя 113-<span>K</span>
-        </div> -->
+        <div class="pwc-main__text" v-html="text[0]"></div>
+        <div class="pwc-main__output">
+          <Table />
+        </div>
         <!-- <div class="pwc-main__text" v-html="text[1]"></div> -->
         <div class="pwc-main__questions">
           <div class="pwc-main__question">
             <div class="pwc-question">
-              <div class="pwc-question__text">
-                Найдите самый короткий промежуток между X1 и X5 и занесите его числовое значение в протокол.
-              </div>
-              <Table />
+              <div class="pwc-question__text">Введите последовательность вида X1-X2-X3-X4-X5</div>
               <div
                   :class="{
                   'pwc-question__field': true,
                   'pwc-question__field--disabled': isResolved,
+                  'pwc-question__field--textarea': true
                 }">
-                <div class="pwc-question__text">Введите свой код</div>
                 <textarea v-model="a1" placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
               </div>
             </div>
@@ -93,6 +88,9 @@ export default {
   },
   data() {
     return {
+      text: [
+        'Найдите самый короткий промежуток между X1 и X5 и занесите его числовое значение в протокол.',
+      ],
       hintIsWasted: false,
       isChecking: false,
       intervalId: null,
@@ -312,6 +310,9 @@ export default {
       width: 340px
       max-width: 100%
 
+      &--textarea
+        width 510px
+
       &::before
         content: ''
         position: absolute
@@ -367,9 +368,6 @@ export default {
       & > textarea
         height: 160px
         padding: 15px
-
-        @media (min-width: 640px)
-          width: 560px
   .pwc-main-popup
     position: fixed
     z-index: 10

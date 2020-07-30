@@ -16,7 +16,7 @@ export default {
     return fetch({ isResolved: false, seconds: 0, isFilled: false }, 200, 500);
   },
   getHint() {
-    return fetch({ text: 'Вспомни все' }, 200, 500);
+    return fetch({ text: '<div><img src="https://leonardo.osnova.io/a8430621-f99b-9d6f-c992-d53690524b61/" /></div>' }, 200, 500);
   },
   check({ a1, a2 }) {
     const isResolved = a1 === '1' && a2 === '2';
