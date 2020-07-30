@@ -50,28 +50,31 @@ export default {
     min-height: 250px
     padding: 25px 0 70px
 
+    @media (max-width: 567px)
+      min-height: 400px
+
     &__img
       position: absolute
       display: block
 
       @media (max-width: 567px)
         bottom: 10px
-        left: 150px
-        width: 150px
+        right: 0
+        width: 320px
 
       @media (min-width: 568px) and (max-width: 679px)
-        bottom: 0
-        right: 0
-        width: 220px
+        bottom: 20px;
+        right: 0;
+        width: 300px;
 
       @media (min-width: 680px) and (max-width: 1023px)
         bottom: 10px
         right: 0
-        width: 250px
+        width: 356px
 
       @media (min-width: 1024px)
-        top: 5px
-        right: 10px
+        top: 27px;
+        right: 10px;
 
     &__container
       position: relative
