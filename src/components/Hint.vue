@@ -166,6 +166,7 @@ export default {
       color: #FFB600
       opacity: .5
       cursor: pointer
+      z-index 10
 
       @media (min-width: 568px)
         top: 7px
