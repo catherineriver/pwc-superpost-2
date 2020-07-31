@@ -175,6 +175,7 @@ export default {
         return;
       }
       this.isChecking = true;
+      this.isShowingWarn = false;
       if (this.values.a1 !== this.a1 || this.values.a2 !== this.a2) {
         this.values.a1 = this.a1;
         this.values.a2 = this.a2;
@@ -239,6 +240,21 @@ export default {
 
     &__warn
       display none
+      position relative
+      color: #e0301e;
+
+      &::after
+        content: ''
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        width: 100%
+        height: 100%
+        background-color: transparent
+        background-image: linear-gradient(0deg, transparent 25%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 50%, transparent 50%, transparent 75%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.25) 100%)
+        background-size: 4px 4px
       &--show
         display block
 
