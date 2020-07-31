@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="pwc-success__text">
-      <img src="https://leonardo.osnova.io/822b0118-cca6-c5c1-445d-fa2d7168867e/" srcset="https://leonardo.osnova.io/b4170890-abcb-d14a-a4e8-f999caa86351/ 2x" alt="">
+      <img src="https://leonardo.osnova.io/c8ae1d11-df39-9023-5e97-2bc3ed9909e3/" srcset="https://leonardo.osnova.io/ecdde544-433f-5afe-0af7-dccf5ae9fea1/ 2x" alt="">
       <div v-html="text"></div>
     </div>
     <div v-if="isFilled" class="pwc-success__message" ref="message">Ваши данные уже отправлены PwC в России.</div>
@@ -173,7 +173,7 @@ export default {
       margin-bottom: 50px
       font-size: 18px
       line-height: 1.6em
-      color: #FFB600
+      color: #DB536A
 
       @media (min-width: 1024px)
         padding-right: 200px

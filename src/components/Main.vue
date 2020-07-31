@@ -321,10 +321,6 @@ export default {
       position: relative
       width: 340px
       max-width: 100%
-
-      &--textarea
-        width 510px
-
       &::before
         content: ''
         position: absolute
@@ -336,7 +332,10 @@ export default {
         height: 5px
         border-radius: 100%
         box-shadow: 0 0 25px 4px #A92929
-
+      &--textarea
+        width 510px
+        &::before
+          bottom: 5px
       &--disabled::before
         box-shadow: 0 0 25px #A8A4A4
       & > input, & > textarea

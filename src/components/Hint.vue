@@ -132,11 +132,11 @@ export default {
 
     &__tooltip-arrow
       position: absolute
-      bottom: -11px
-      left: 0
-      right: 0
-      width: 20px
-      height: 20px
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      width: 15px;
+      height: 15px;
       margin: 0 auto
       background-color: #0E0E0E
       border-radius: 0 0 4px 0
