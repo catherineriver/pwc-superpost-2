@@ -64,10 +64,16 @@
               </div>
             </div>
           </div>
+          <div :class="{
+          'pwc-main__warn': true,
+          'pwc-main__warn--show': isShowingWarn,
+          }">Вы это уже вводили, попробуйте другое значение</div>
         </div>
         <div v-if="!isResolved" class="pwc-main__buttons">
           <div class="pwc-main__button">
-            <div class="pwc-button" @click="check">Проверить</div>
+            <div
+              class="pwc-button"
+              @click="check">Проверить</div>
           </div>
           <div v-if="!hintIsWasted" class="pwc-main__button">
             <Hint @wasted="hintIsWasted = true" />
@@ -109,6 +115,10 @@ export default {
         isOpen: false,
         text: '',
         isCorrect: false,
+      },
+      values: {
+        a1: null,
+        a2: null,
       },
     };
   },
@@ -152,6 +162,9 @@ export default {
     clearInterval(this.intervalId);
   },
   methods: {
+    validate() {
+
+    },
     start() {
       this.intervalId = setInterval(() => {
         this.$store.commit('tick');
@@ -161,12 +174,18 @@ export default {
       if (this.isChecking) {
         return;
       }
-
-      this.$store.commit('setCheckCount');
-
-      Analytics.sendEvent('Check');
-
       this.isChecking = true;
+      if (this.values.a1 !== this.a1 || this.values.a2 !== this.a2) {
+        this.values.a1 = this.a1;
+        this.values.a2 = this.a2;
+
+        this.$store.commit('setCheckCount');
+        Analytics.sendEvent('Check');
+      } else {
+        this.isChecking = false;
+        this.isShowingWarn = true;
+        return;
+      }
 
       client
         .check({ a1: this.a1, a2: this.a2 })
@@ -217,6 +236,11 @@ export default {
 
     @media (min-width: 720px)
       padding: 70px 0
+
+    &__warn
+      display none
+      &--show
+        display block
 
     &__timer
       padding-top: 25px
@@ -292,6 +316,9 @@ export default {
 
       &:not(:last-child)
         margin-right: 20px
+
+      &--disabled
+        background red
 
         @media (min-width: 375px)
           margin-right: 30px

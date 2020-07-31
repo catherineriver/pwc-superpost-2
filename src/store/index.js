@@ -62,6 +62,9 @@ export default new Vuex.Store({
     setA2(state, value) {
       state.a2 = value;
     },
+    setB1(state, value) {
+      state.b1 = value;
+    },
   },
   actions: {
   },
