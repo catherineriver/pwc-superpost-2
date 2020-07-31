@@ -93,8 +93,18 @@ export default {
       border: 1px solid #775B13
       transform: translate3d(-50%, 0, 0)
 
-      background-image: linear-gradient(0deg,#ffb600 25%,#e5a400 0,#e5a400 50%,#ffb600 0,#ffb600 75%,#e5a400 0,#e5a400);
-      background-size: 4px 4px;
+      // background-image: linear-gradient(0deg,#ffb600 25%,#e5a400 0,#e5a400 50%,#ffb600 0,#ffb600 75%,#e5a400 0,#e5a400);
+
+      &::after
+        content ''
+        position absolute
+        top 0
+        bottom 0px
+        left 0
+        right 0
+        background-image linear-gradient(0deg, rgba(119, 91, 19, 0.15) 0, rgba(119, 91, 19, 0.15) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 2px)
+        background-size 2px 2px
+
 
       @media (min-width: 568px)
         width: 375px
@@ -121,6 +131,19 @@ export default {
       border-bottom: 1px solid #775B13
       border-right: 1px solid #775B13
       transform: rotate(45deg)
+      overflow hidden
+
+      &::before
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: -12px;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(0deg, rgba(119,91,19,0.15) 0, rgba(119,91,19,0.15) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 2px);
+        background-size: 2px 2px;
+        transform: rotate(-45deg);
+        width: 50px;
 
     &__tooltip-close
       position: absolute

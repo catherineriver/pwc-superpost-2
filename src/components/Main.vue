@@ -34,7 +34,7 @@
                   'pwc-question__field--disabled': isResolved,
                   'pwc-question__field--textarea': true
                 }">
-                <textarea v-model="a1" placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
+                <textarea placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
                   'pwc-question__field': true,
                   'pwc-question__field--disabled': isResolved
                 }">
-                <input v-model="a2" type="text" placeholder="Введите ответ" :disabled="isResolved">
+                <input v-model="a1" type="text" placeholder="Введите ответ" :disabled="isResolved">
               </div>
             </div>
           </div>
