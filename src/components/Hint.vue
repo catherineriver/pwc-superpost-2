@@ -1,5 +1,5 @@
 <template>
-  <div class="pwc-hint">
+  <div class="pwc-hint" v-on-clickaway="away">
     <div v-if="isOpen" class="pwc-hint__tooltip">
       <div class="pwc-hint__tooltip-close" @click="close">
         <svg viewBox="0 0 10 10"><path d="M.47 8.47a.75.75 0 001.06 1.06L5 6.06l3.47 3.47a.75.75 0 001.06-1.06L6.06 5l3.47-3.47A.75.75 0 008.47.47L5 3.94 1.53.47A.75.75 0 10.47 1.53L3.94 5 .47 8.47z"/></svg>
@@ -20,7 +20,9 @@
 <script>
 import client from 'api-client';
 import { mapGetters } from 'vuex';
+import { mixin as clickaway } from 'vue-clickaway';
 import * as Analytics from '../lib/analytics';
+
 
 export default {
   name: 'Hint',
@@ -30,6 +32,7 @@ export default {
       text: '',
     };
   },
+  mixins: [clickaway],
   computed: {
     ...mapGetters([
       'hintCount',
@@ -39,6 +42,15 @@ export default {
     },
   },
   methods: {
+    away() {
+      Analytics.sendEvent(`Hint close (${this.hintCount})`);
+
+      this.isOpen = false;
+
+      if (this.hintCount > 1) {
+        this.$emit('wasted');
+      }
+    },
     open() {
       if (this.isOpen) {
         this.close();

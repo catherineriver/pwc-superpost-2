@@ -89,6 +89,7 @@ import Success from './Success.vue';
 import Table from './Table.vue';
 import * as Analytics from '../lib/analytics';
 
+
 export default {
   name: 'Main',
   components: {
@@ -111,6 +112,7 @@ export default {
       },
     };
   },
+
   computed: {
     ...mapGetters([
       'isResolved',
