@@ -106,7 +106,7 @@ export default {
       isChecking: false,
       intervalId: null,
       popup: {
-        isOpen: false,
+        isOpen: true,
         text: '',
         isCorrect: false,
       },
@@ -396,7 +396,7 @@ export default {
     @media (min-width: 840px)
       position: absolute
       align-items: flex-end
-      padding-bottom: 100px
+      padding-bottom: 350px
 
     &__bg
       position: absolute
