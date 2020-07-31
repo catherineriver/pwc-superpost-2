@@ -106,7 +106,7 @@ export default {
       isChecking: false,
       intervalId: null,
       popup: {
-        isOpen: true,
+        isOpen: false,
         text: '',
         isCorrect: false,
       },
