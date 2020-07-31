@@ -46,7 +46,7 @@
                   'pwc-question__field': true,
                   'pwc-question__field--disabled': isResolved
                 }">
-                <input v-model="a1" type="text" placeholder="Введите ответ" :disabled="isResolved">
+                <input v-model="a1" type="text" placeholder="Введите ответ" :disabled="isResolved" @change="removeWarning">
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
                   'pwc-question__field': true,
                   'pwc-question__field--disabled': isResolved,
                 }">
-                <input v-model="a2" type="text" placeholder="Введите только число" :disabled="isResolved">
+                <input v-model="a2" type="text" placeholder="Введите только число" :disabled="isResolved" @change="removeWarning">
               </div>
             </div>
           </div>
@@ -162,9 +162,6 @@ export default {
     clearInterval(this.intervalId);
   },
   methods: {
-    validate() {
-
-    },
     start() {
       this.intervalId = setInterval(() => {
         this.$store.commit('tick');
@@ -175,7 +172,7 @@ export default {
         return;
       }
       this.isChecking = true;
-      this.isShowingWarn = false;
+
       if (this.values.a1 !== this.a1 || this.values.a2 !== this.a2) {
         this.values.a1 = this.a1;
         this.values.a2 = this.a2;
@@ -226,6 +223,9 @@ export default {
     },
     closeMessagePopup() {
       this.popup.isOpen = false;
+    },
+    removeWarning() {
+      this.isShowingWarn = false;
     },
   },
 };
