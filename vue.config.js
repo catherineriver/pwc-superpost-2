@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   configureWebpack: {
     output: {
-      library: 'PwCAiChallenge',
+      library: 'PwCAiChallenge2',
     },
   },
   productionSourceMap: false,

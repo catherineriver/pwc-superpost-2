@@ -34,7 +34,7 @@
                   'pwc-question__field--disabled': isResolved,
                   'pwc-question__field--textarea': true
                 }">
-                <textarea placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
+                <textarea v-model="a0" placeholder="Введите ответ" :disabled="isResolved" rows="4" cols="4"></textarea>
               </div>
             </div>
           </div>
@@ -117,6 +117,7 @@ export default {
         isCorrect: false,
       },
       values: {
+        a0: null,
         a1: null,
         a2: null,
       },
@@ -135,6 +136,14 @@ export default {
       const seconds = this.seconds - (hours * 3600) - (minutes * 60);
 
       return `${Number(hours).toString().padStart(2, '0')}:${Number(minutes).toString().padStart(2, '0')}:${Number(seconds).toString().padStart(2, '0')}`;
+    },
+    a0: {
+      get() {
+        return this.$store.state.a0;
+      },
+      set(value) {
+        this.$store.commit('setA0', value);
+      },
     },
     a1: {
       get() {

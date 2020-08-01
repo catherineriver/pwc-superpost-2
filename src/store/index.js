@@ -56,14 +56,14 @@ export default new Vuex.Store({
     setCheckCount(state) {
       state.checkCount += 1;
     },
+    setA0(state, value) {
+      state.a0 = value;
+    },
     setA1(state, value) {
       state.a1 = value;
     },
     setA2(state, value) {
       state.a2 = value;
-    },
-    setB1(state, value) {
-      state.b1 = value;
     },
   },
   actions: {

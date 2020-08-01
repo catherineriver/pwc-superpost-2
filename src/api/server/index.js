@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
   getData() {
     return axios
-      .post('/special/pwc-ai-2-2/data', {}, {
+      .post('/special/pwc-ai-2/data', {}, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
@@ -28,9 +28,10 @@ export default {
       })
       .then((response) => response.data);
   },
-  check({ a1, a2 }) {
+  check({ a0, a1, a2 }) {
     const fd = new FormData();
 
+    fd.append('a0', a0);
     fd.append('a1', a1);
     fd.append('a2', a2);
 
