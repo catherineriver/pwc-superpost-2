@@ -1,6 +1,6 @@
 const CONSOLE_STYLE = 'color: #E87E04';
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
-const analyticsCategory = 'PwC 572';
+const analyticsCategory = 'PwC 592';
 
 /**
  * Send analytics events via GTM
