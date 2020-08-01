@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
   getData() {
     return axios
-      .post('/special/pwc-ai/data', {}, {
+      .post('/special/pwc-ai-2-2/data', {}, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
@@ -12,7 +12,7 @@ export default {
   },
   start() {
     return axios
-      .post('/special/pwc-ai/start', {}, {
+      .post('/special/pwc-ai-2/start', {}, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
@@ -21,7 +21,7 @@ export default {
   },
   getHint() {
     return axios
-      .post('/special/pwc-ai/hint', {}, {
+      .post('/special/pwc-ai-2/hint', {}, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
@@ -35,7 +35,7 @@ export default {
     fd.append('a2', a2);
 
     return axios
-      .post('/special/pwc-ai/check', fd, {
+      .post('/special/pwc-ai-2/check', fd, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
@@ -44,7 +44,7 @@ export default {
   },
   profile(data) {
     return axios
-      .post('/special/pwc-ai/profile', data, {
+      .post('/special/pwc-ai-2/profile', data, {
         headers: {
           'X-This-Is-CSRF': 'THIS IS SPARTA!',
         },
