@@ -11,7 +11,7 @@ import * as Analytics from './lib/analytics';
 Vue.use(VueObserveVisibility);
 
 Vue.use(VueScrollTo, {
-  offset: -50,
+  offset: -60,
 });
 
 Vue.config.productionTip = false;

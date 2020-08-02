@@ -8,6 +8,7 @@ export default new Vuex.Store({
     isResolved: false,
     seconds: 0,
     percent: 0,
+    a0: '',
     a1: '',
     a2: '',
     hintCount: 0,
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     isResolved: (state) => state.isResolved,
     seconds: (state) => state.seconds,
     percent: (state) => state.percent,
+    a0: (state) => state.a0,
     a1: (state) => state.a1,
     a2: (state) => state.a2,
     hintCount: (state) => state.hintCount,
@@ -29,6 +31,7 @@ export default new Vuex.Store({
       isResolved = false,
       seconds = 0,
       isFilled = false,
+      a0 = '',
       a1 = '',
       a2 = '',
       percent = 0,
@@ -36,6 +39,7 @@ export default new Vuex.Store({
       state.isResolved = isResolved;
       state.seconds = seconds;
       state.isFilled = isFilled;
+      state.a0 = a0;
       state.a1 = a1;
       state.a2 = a2;
       state.percent = percent;

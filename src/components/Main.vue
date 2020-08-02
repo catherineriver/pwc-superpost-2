@@ -121,6 +121,7 @@ export default {
         a1: null,
         a2: null,
       },
+      isShowingWarn: false,
     };
   },
 
