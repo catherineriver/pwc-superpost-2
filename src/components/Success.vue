@@ -157,7 +157,7 @@ export default {
         top: -8px
         left: 0
         height: 15px
-        background-color: #FFB600
+        background-color: #DB536A
 
         &::after
           content: attr(data-value)'%'
